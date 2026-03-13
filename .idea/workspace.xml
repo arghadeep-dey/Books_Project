@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bc904653-6f5d-4b6c-9afb-d146be5065fd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book2.py" beforeDir="false" afterPath="$PROJECT_DIR$/book2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="5" />
+    <option name="cachedIndexableFilesCount" value="6" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -119,7 +120,8 @@
       <workItem from="1773163839419" duration="709000" />
       <workItem from="1773164561425" duration="52000" />
       <workItem from="1773216462180" duration="7700000" />
-      <workItem from="1773335141317" duration="2826000" />
+      <workItem from="1773335141317" duration="3283000" />
+      <workItem from="1773393456309" duration="630000" />
     </task>
     <servers />
   </component>
