@@ -21,7 +21,7 @@ class Book:
         self.rating = rating
         self.published_date = published_date
 
-#CREATION VALIDATION
+#BOOK CREATION VALIDATION
 class BookRequest(BaseModel):
     book_id: Optional[int] = None
     title: str = Field(min_length=3)
@@ -41,7 +41,7 @@ class BookRequest(BaseModel):
                 }
             }
 
-
+#BOOK LIST
 BOOKS = [
     Book(1,"Computer Science Pro","codingwithroby","Avery nice book!",5,2005),
     Book(2,"Be Fast with Fast API","codingwithroby","Avery great book!",5,2007),
@@ -53,12 +53,12 @@ BOOKS = [
     Book(8,"HP5","Author4","book!",4,2026)
 ]
 
-
+#READ ALL BOOKS
 @app.get("/books")
 async def read_all_books():
     return BOOKS
 
-
+#SEARCH BOOK WITH BOOK ID
 @app.get("/books/{book_id}")
 async def read_book(book_id: int = Path(gt=0)):
     for book in BOOKS:
@@ -66,7 +66,7 @@ async def read_book(book_id: int = Path(gt=0)):
             return book
     raise HTTPException(status_code=404, detail="Book not found")
 
-
+#SEARCH WITH RATINGS/ QUERY VALIDATION
 @app.get("/books/")
 async def read_book_by_rating(book_rating: int = Query(gt=0, lt=6)):
     books_to_return = []
@@ -75,7 +75,7 @@ async def read_book_by_rating(book_rating: int = Query(gt=0, lt=6)):
             books_to_return.append(book)
     return books_to_return
 
-
+#SEARCH WITH PUBLISHED DATE/ PATH VALIDATION
 @app.get("/books/publish/")
 async def read_books_by_publish_date(published_date: int = Query(gt=1999, lt=2031)):
     books_to_return = []
@@ -84,7 +84,7 @@ async def read_books_by_publish_date(published_date: int = Query(gt=1999, lt=203
             books_to_return.append(book)
     return books_to_return
 
-
+#NEW BOOK CREATION
 @app.post("/create-book")
 async def create_book(book_request: BookRequest):
     new_book = Book(**book_request.model_dump())
@@ -95,7 +95,7 @@ def findbook_id(book: Book):
     book.book_id = 1 if len(BOOKS) == 0 else BOOKS[-1].book_id + 1
     return book
 
-
+#UPDATE BASED ON ID
 @app.put("/books/update_book")
 async def update_book(book: BookRequest):
     book_change = False
@@ -106,7 +106,7 @@ async def update_book(book: BookRequest):
     if not book_change:
         raise HTTPException(status_code=404, detail="Book not found")
 
-
+#DELETE BASED ON ID
 @app.delete("/books/{book_id}")
 async def delete_book(book_id: int = Path(gt=0)):
     book_change = False
