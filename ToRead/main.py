@@ -1,7 +1,15 @@
 from fastapi import FastAPI
-import models
-from database import engine
-from routers import auth,todos
+
+try:
+    # Recommended (run from repo root): `uvicorn ToRead.main:app --reload`
+    from . import models
+    from .database import engine
+    from .routers import auth, todos
+except ImportError:  # pragma: no cover
+    # When running from inside `ToRead/`: `uvicorn main:app --reload`
+    import models
+    from database import engine
+    from routers import auth, todos
 
 app = FastAPI()
 

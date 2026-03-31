@@ -3,10 +3,14 @@ from typing import Annotated
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from fastapi import status, FastAPI, Depends, HTTPException, Path, APIRouter
+from fastapi import status, Depends, HTTPException, Path, APIRouter
 
-from models import Todos
-from database import SessionLocal
+try:
+    from ..models import Todos
+    from ..database import SessionLocal
+except ImportError:  # pragma: no cover
+    from models import Todos
+    from database import SessionLocal
 
 router = APIRouter()
 
