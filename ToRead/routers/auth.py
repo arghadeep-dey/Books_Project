@@ -33,7 +33,7 @@ def get_db():
         db.close()
 
 db_dependencies = Annotated[Session, Depends(get_db)]
-
+#Create New To Read
 @router.post("/auth/", status_code=status.HTTP_201_CREATED)
 async def create_user(db: db_dependencies,create_user_request: CreateUserRequest):
     create_user_model = User(
