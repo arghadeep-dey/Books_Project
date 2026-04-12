@@ -58,7 +58,7 @@ async def create_user(db: db_dependencies,create_user_request: CreateUserRequest
     db.add(create_user_model)
     db.commit()
 
-
+#Authentication
 @router.post("/token/", status_code=status.HTTP_201_CREATED)
 async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
                       db: db_dependencies):
